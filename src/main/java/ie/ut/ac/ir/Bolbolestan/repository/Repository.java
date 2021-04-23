@@ -1,6 +1,4 @@
-package ie.ut.ac.ir.Bolbolestan.dataAccess.mappers;
-
-import ie.ut.ac.ir.Bolbolestan.dataAccess.ConnectionPool;
+package ie.ut.ac.ir.Bolbolestan.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Mapper<T, I> {
+public abstract class Repository<T, I> {
     abstract protected String getFindByIdStatement();
 
     abstract protected void fillFindByIdValues(PreparedStatement st, I id) throws SQLException;
@@ -42,7 +40,7 @@ public abstract class Mapper<T, I> {
         } catch (Exception e) {
             st.close();
             con.close();
-            System.out.println("error in Mapper.find query.");
+            System.out.println("error in Repository.find query.");
             e.printStackTrace();
             throw e;
         }
@@ -59,7 +57,7 @@ public abstract class Mapper<T, I> {
         } catch (Exception e) {
             st.close();
             con.close();
-            System.out.println("error in Mapper.insert query.");
+            System.out.println("error in Repository.insert query.");
             e.printStackTrace();
         }
     }
@@ -81,7 +79,7 @@ public abstract class Mapper<T, I> {
         } catch (Exception e) {
             st.close();
             con.close();
-            System.out.println("error in Mapper.findAll query.");
+            System.out.println("error in Repository.findAll query.");
             e.printStackTrace();
             throw e;
         }

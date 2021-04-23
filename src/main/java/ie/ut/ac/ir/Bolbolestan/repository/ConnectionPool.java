@@ -1,4 +1,4 @@
-package ie.ut.ac.ir.Bolbolestan.dataAccess;
+package ie.ut.ac.ir.Bolbolestan.repository;
 
 import org.apache.commons.dbcp.BasicDataSource;
 

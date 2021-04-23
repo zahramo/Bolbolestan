@@ -1,6 +1,5 @@
-package ie.ut.ac.ir.Bolbolestan.dataAccess.mappers;
+package ie.ut.ac.ir.Bolbolestan.repository;
 
-import ie.ut.ac.ir.Bolbolestan.dataAccess.ConnectionPool;
 import ie.ut.ac.ir.Bolbolestan.model.Bolbol;
 
 import java.sql.Connection;
@@ -9,23 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BolbolMapper extends Mapper<Bolbol, String> {
+public class BolbolRepository extends Repository<Bolbol, String> {
     private static final String TABLE_NAME = "Bolbol";
-    private static BolbolMapper instance;
+    private static BolbolRepository instance;
 
-    public static BolbolMapper getInstance() {
+    public static BolbolRepository getInstance() {
         if (instance == null) {
             try {
-                instance = new BolbolMapper();
+                instance = new BolbolRepository();
             } catch (SQLException e) {
                 e.printStackTrace();
-                System.out.println("error in BolbolMapper.create query.");
+                System.out.println("error in BolbolRepository.create query.");
             }
         }
         return instance;
     }
 
-    private BolbolMapper() throws SQLException {
+    private BolbolRepository() throws SQLException {
         Connection con = ConnectionPool.getConnection();
         PreparedStatement createTableStatement = con.prepareStatement(
                 String.format("CREATE TABLE IF NOT EXISTS %s(id CHAR(50),\nname CHAR(225),\nhabitat CHAR(225),\nPRIMARY KEY(id));", TABLE_NAME)
